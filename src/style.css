@@ -1,0 +1,176 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
+}
+
+:root {
+	--light-grayish-cyan-bg: #effafa;
+	--light-grayish-cyan: #eef6f6;
+	--dark-grayish-cyan: #7b8e8e;
+	--very-dark-grayish-cyan: #2c3a3a;
+	--blue-grayish-cyan: #5ba4a4;
+}
+
+html {
+	font-size: 62.5%;
+}
+
+body {
+	font-size: 1.5rem;
+	font-family: 'Spartan', sans-serif;
+	color: var(--very-dark-grayish-cyan);
+}
+
+header {
+	background-image: url('./images/bg-header-mobile.svg');
+	min-height: 10rem;
+}
+
+.filter-container {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin: 2rem;
+	padding: 3rem 2rem;
+	border-radius: 0.5rem;
+	margin-top: -6rem;
+	background-color: #fff;
+	box-shadow: 2px 2px 10px -5px, -2px -2px 10px -5px;
+}
+
+.filter {
+	display: inline-flex;
+	align-items: center;
+	background-color: var(--light-grayish-cyan-bg);
+	border-radius: 0.5rem;
+	overflow: hidden;
+}
+
+.filter-text {
+	padding: 0.5rem;
+	color: var(--dark-grayish-cyan);
+}
+
+.remove-filter {
+	padding: 0.5rem;
+	background-color: var(--blue-grayish-cyan);
+	align-self: stretch;
+}
+
+.remove-filter img {
+	width: 1.5rem;
+	height: 1.5rem;
+	vertical-align: middle;
+}
+
+.jobs {
+	padding: 2rem;
+}
+
+.job {
+	border-radius: 0.5rem;
+	box-shadow: 2px 2px 10px -5px, -2px -2px 10px -5px;
+}
+
+.job:not(:first-child) {
+	margin-top: 4rem;
+}
+
+.company-name {
+	color: var(--blue-grayish-cyan);
+}
+
+.badge {
+	background-color: var(--blue-grayish-cyan);
+	font-size: 1rem;
+	color: #fff;
+	text-transform: uppercase;
+	padding: 0.5rem 0.7rem;
+	border-radius: 1rem;
+}
+
+.badge {
+	margin-left: 0.5rem;
+}
+
+.company-name-container span:nth-child(2) {
+	margin-left: 1.5rem;
+}
+
+.badge.featured {
+	background-color: var(--very-dark-grayish-cyan);
+}
+
+.job-position {
+	margin-top: 1rem;
+	font-weight: 700;
+}
+
+.job-info {
+	margin-top: 1rem;
+	color: var(--dark-grayish-cyan);
+}
+
+.job-tags {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 2rem;
+}
+
+.job-tag {
+	background-color: var(--light-grayish-cyan-bg);
+	padding: 1rem;
+	color: var(--blue-grayish-cyan);
+	border-radius: 0.5rem;
+}
+
+@media (max-width: 768px) {
+	.company-logo {
+		transform: translateY(-2rem);
+		margin-bottom: -2rem;
+		cursor: pointer;
+	}
+
+	.company-logo img {
+		width: 4rem;
+		height: 4rem;
+	}
+
+	.job {
+		padding: 0 2rem 2rem;
+	}
+
+	.job-tags {
+		border-top: 0.2rem solid #939e9e;
+		margin-top: 2rem;
+		padding-top: 2rem;
+	}
+}
+
+@media (min-width: 768px) {
+	.job {
+		display: flex;
+		align-items: center;
+		padding: 2rem;
+	}
+
+	.company-logo img {
+		width: 8rem;
+		height: 8rem;
+	}
+
+	.job-information {
+		margin-left: 2rem;
+		margin-right: 2rem;
+	}
+
+	.job-tags {
+		margin-left: auto;
+	}
+}
