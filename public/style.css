@@ -28,20 +28,28 @@ body {
 }
 
 header {
-	background-image: url('./images/bg-header-mobile.svg');
+	background-image: url('/images/bg-header-mobile.svg');
 	min-height: 10rem;
 }
 
 .filter-container {
-	display: flex;
+	display: grid;
+	grid-template-columns: 85% 15%;
 	align-items: center;
-	justify-content: space-between;
 	margin: 2rem;
 	padding: 3rem 2rem;
 	border-radius: 0.5rem;
-	margin-top: -6rem;
+	margin-top: -4rem;
 	background-color: #fff;
-	box-shadow: 2px 2px 10px -5px, -2px -2px 10px -5px;
+	box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+		rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
+.filters {
+	flex-basis: 90%;
+	flex-wrap: wrap;
+	display: flex;
+	gap: 2rem;
 }
 
 .filter {
@@ -61,6 +69,7 @@ header {
 	padding: 0.5rem;
 	background-color: var(--blue-grayish-cyan);
 	align-self: stretch;
+	cursor: pointer;
 }
 
 .remove-filter img {
@@ -69,13 +78,20 @@ header {
 	vertical-align: middle;
 }
 
-.jobs {
-	padding: 2rem;
+.filter-clear-btn {
+	color: var(--blue-grayish-cyan);
+	cursor: pointer;
+	justify-self: end;
 }
 
 .job {
 	border-radius: 0.5rem;
-	box-shadow: 2px 2px 10px -5px, -2px -2px 10px -5px;
+	box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+		rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
+.job:hover {
+	border-left: 0.5rem solid var(--blue-grayish-cyan);
 }
 
 .job:not(:first-child) {
@@ -130,7 +146,40 @@ header {
 	border-radius: 0.5rem;
 }
 
+.sidebar {
+	padding: 2rem;
+	box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+		rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
+.sidebar-title {
+	font-weight: 700;
+}
+
+.sidebar-body {
+	margin-top: 1rem;
+}
+
+.filter-option:not(:first-child) {
+	margin-top: 0.5rem;
+}
+
+.filter-option input {
+	margin-right: 0.5rem;
+	cursor: pointer;
+}
+
+.two-columns {
+	display: grid;
+	padding: 2rem;
+	gap: 2rem;
+}
+
 @media (max-width: 768px) {
+	.filter-container {
+		margin-bottom: 0;
+	}
+
 	.company-logo {
 		transform: translateY(-2rem);
 		margin-bottom: -2rem;
@@ -150,6 +199,10 @@ header {
 		border-top: 0.2rem solid #939e9e;
 		margin-top: 2rem;
 		padding-top: 2rem;
+	}
+
+	.sidebar {
+		margin-bottom: 2rem;
 	}
 }
 
@@ -172,5 +225,31 @@ header {
 
 	.job-tags {
 		margin-left: auto;
+	}
+
+	.filter-container {
+		margin-bottom: 0;
+	}
+}
+
+@media (max-width: 1024px) {
+	.jobs {
+		order: 1;
+	}
+
+	.sidebar {
+		order: 0;
+	}
+}
+
+@media (min-width: 1024px) {
+	.two-columns {
+		grid-template-columns: 80% 20%;
+		gap: 2rem;
+	}
+
+	.sidebar {
+		width: calc(100% - 2rem);
+		align-self: start;
 	}
 }

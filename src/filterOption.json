@@ -1,0 +1,9 @@
+[
+	{ "id": 1, "name": "html", "value": "HTML" },
+	{ "id": 2, "name": "css", "value": "CSS" },
+	{ "id": 3, "name": "javascript", "value": "Javascript" },
+	{ "id": 4, "name": "python", "value": "Python" },
+	{ "id": 5, "name": "sass", "value": "Sass" },
+	{ "id": 6, "name": "ruby", "value": "Ruby" },
+	{ "id": 7, "name": "django", "value": "Django" }
+]

@@ -1,32 +1,59 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import FilterContainer from './components/Filter/FilterContainer';
-import Job from './components/Job/Job';
-import jobsData from './data.json';
-import './style.css';
+import Jobcontainer from './components/Job/JobContainer';
+import Sidebar from './components/Sidebar/Sidebar';
+import filterOptionArray from './filterOption.json';
 
 const App = () => {
-	const jobElements = jobsData.map((job) => <Job key={job.id} {...job} />);
-	const data = {
-		id: 1,
-		company: 'Photosnap',
-		logo: './images/photosnap.svg',
-		new: true,
-		featured: true,
-		position: 'Senior Frontend Developer',
-		role: 'Frontend',
-		level: 'Senior',
-		postedAt: '1d ago',
-		contract: 'Full Time',
-		location: 'USA Only',
-		languages: ['HTML', 'CSS', 'JavaScript'],
-		tools: [],
+	const [filterArray, setFilterArray] = useState([]);
+
+	useEffect(() => {
+		window.history.pushState(
+			{},
+			null,
+			`/${filterArray.length > 0 ? `?fiter=${filterArray.join(',')}` : ''}`
+		);
+	}, [filterArray]);
+
+	useEffect(() => {
+		const urlSearchParams = new URLSearchParams(window.location.search);
+		const params = Object.fromEntries(urlSearchParams.entries());
+		if (params.filter) {
+			const newFilterArray = params.filter
+				.split(',')
+				.filter((key) => filterOptionArray.find((row) => row.name === key));
+			setFilterArray(newFilterArray);
+		}
+	}, []);
+
+	const changeFilterArray = (name) => {
+		setFilterArray((prev) =>
+			!filterArray.includes(name)
+				? [...prev, name]
+				: prev.filter((row) => row !== name)
+		);
 	};
+
+	const removeFilter = (name) => {
+		setFilterArray((prev) => prev.filter((row) => row !== name));
+	};
+
+	const clearFilters = () => setFilterArray([]);
+
 	return (
 		<div className="container">
 			<header></header>
-			<FilterContainer />
-			<div className="jobs">
-				{jobElements.length > 0 ? jobElements : <h2>No Jobs found</h2>}
+			<FilterContainer
+				filterArray={filterArray}
+				clearFilters={clearFilters}
+				removeFilter={removeFilter}
+			/>
+			<div className="two-columns">
+				<Jobcontainer filterArray={filterArray} />
+				<Sidebar
+					filterArray={filterArray}
+					changeFilterArray={changeFilterArray}
+				/>
 			</div>
 		</div>
 	);
